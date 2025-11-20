@@ -1,4 +1,5 @@
 import styles from "./components/Home.module.css";
+import DiscordStatus from "./components/DiscordStatus";
 
 export default function Home() {
   return (
@@ -24,6 +25,8 @@ export default function Home() {
                 DC
               </a>
             </div>
+            {/* Discord Status & Spotify */}
+            <DiscordStatus />
           </div>
         </div>
       </section>
