@@ -5,40 +5,20 @@ import styles from './DiscordStatus.module.css';
 
 interface SpotifyActivity {
   name: string;
-  details: string;
-  state: string;
-  assets: {
+  details?: string;
+  state?: string;
+  assets?: {
     image_url: string;
-  };
-}
-
-interface LanyardData {
-  success: boolean;
-  data: {
-    discord_status: string;
-    activities: Array<{
-      name: string;
-      type: number;
-      details?: string;
-      state?: string;
-      assets?: {
-        image_url: string;
-      };
-    }>;
-    discord_user?: {
-      username: string;
-      display_name: string;
-      avatar: string;
-    };
   };
 }
 
 const DISCORD_USER_ID = '556283324914728970';
 
 export default function DiscordStatus() {
-  const [data, setData] = useState<LanyardData | null>(null);
+  const [status, setStatus] = useState<string>('offline');
   const [spotify, setSpotify] = useState<SpotifyActivity | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // 初期データ取得
@@ -47,16 +27,23 @@ export default function DiscordStatus() {
         const response = await fetch(
           `https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`
         );
-        const result = await response.json();
-        setData(result);
+        if (!response.ok) throw new Error('Failed to fetch data');
 
-        // Spotify アクティビティを抽出
-        const spotifyActivity = result.data.activities.find(
-          (activity: any) => activity.name === 'Spotify'
-        );
-        setSpotify(spotifyActivity || null);
-      } catch (error) {
-        console.error('Error fetching Lanyard data:', error);
+        const result = await response.json();
+
+        if (result.data) {
+          setStatus(result.data.discord_status || 'offline');
+
+          // Spotify アクティビティを抽出
+          const spotifyActivity = result.data.activities?.find(
+            (activity: any) => activity.name === 'Spotify'
+          );
+          setSpotify(spotifyActivity || null);
+        }
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching Lanyard data:', err);
+        setError('Unable to load Discord status');
       } finally {
         setLoading(false);
       }
@@ -64,35 +51,59 @@ export default function DiscordStatus() {
 
     fetchData();
 
-    // WebSocket でリアルタイム更新
-    const ws = new WebSocket(
-      `wss://api.lanyard.rest?user_id=${DISCORD_USER_ID}`
-    );
+    // WebSocket でリアルタイム更新を試みる
+    let ws: WebSocket | null = null;
 
-    ws.onmessage = (event) => {
-      const { d } = JSON.parse(event.data);
-      if (d) {
-        setData(prev => prev ? { ...prev, data: d } : null);
+    try {
+      ws = new WebSocket(
+        `wss://api.lanyard.rest?user_id=${DISCORD_USER_ID}`
+      );
 
-        const spotifyActivity = d.activities.find(
-          (activity: any) => activity.name === 'Spotify'
-        );
-        setSpotify(spotifyActivity || null);
-      }
-    };
+      ws.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data);
+          const { d } = message;
+
+          // Lanyard WebSocket データはあらゆる時点で来る
+          if (d) {
+            setStatus(d.discord_status || 'offline');
+
+            const spotifyActivity = d.activities?.find(
+              (activity: any) => activity.name === 'Spotify'
+            );
+            setSpotify(spotifyActivity || null);
+          }
+        } catch (e) {
+          console.error('WebSocket message error:', e);
+        }
+      };
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+
+      ws.onclose = () => {
+        console.log('WebSocket closed');
+      };
+    } catch (e) {
+      console.error('WebSocket connection error:', e);
+    }
 
     return () => {
-      if (ws.readyState === WebSocket.OPEN) {
+      if (ws && ws.readyState === WebSocket.OPEN) {
         ws.close();
       }
     };
   }, []);
 
+  if (error) {
+    return null; // エラー時は非表示
+  }
+
   if (loading) {
     return (
       <div className={styles.statusContainer}>
         <div className={styles.loadingDot}></div>
-        <p>Loading...</p>
       </div>
     );
   }
@@ -119,17 +130,17 @@ export default function DiscordStatus() {
           <span
             className={styles.statusDot}
             style={{
-              backgroundColor: statusColors[data?.data.discord_status || 'offline'],
+              backgroundColor: statusColors[status] || '#747f8d',
             }}
           ></span>
           <span className={styles.statusText}>
-            {statusTexts[data?.data.discord_status || 'offline']}
+            {statusTexts[status] || 'Offline'}
           </span>
         </div>
       </div>
 
       {/* Spotify Activity */}
-      {spotify && (
+      {spotify && spotify.details && (
         <div className={styles.spotifySection}>
           <div className={styles.spotifyHeader}>
             <svg className={styles.spotifyIcon} viewBox="0 0 24 24" fill="currentColor">
@@ -140,6 +151,7 @@ export default function DiscordStatus() {
           <div className={styles.spotifyContent}>
             {spotify.assets?.image_url && (
               <div className={styles.albumArt}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={spotify.assets.image_url}
                   alt="Album cover"
@@ -148,8 +160,8 @@ export default function DiscordStatus() {
               </div>
             )}
             <div className={styles.songDetails}>
-              <div className={styles.songTitle}>{spotify.details}</div>
-              <div className={styles.artistName}>{spotify.state}</div>
+              <div className={styles.songTitle}>{spotify.details || 'Unknown Song'}</div>
+              <div className={styles.artistName}>{spotify.state || 'Unknown Artist'}</div>
             </div>
           </div>
         </div>
