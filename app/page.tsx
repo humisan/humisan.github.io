@@ -1,7 +1,19 @@
+'use client';
+
+import { useIsMobile } from "./hooks/useIsMobile";
 import styles from "./components/Home.module.css";
 import DiscordStatus from "./components/DiscordStatus";
+import MobileHome from "./components/MobileHome";
 
 export default function Home() {
+  const isMobile = useIsMobile();
+
+  // モバイルの場合
+  if (isMobile) {
+    return <MobileHome />;
+  }
+
+  // PC版
   return (
     <div>
       {/* Glassmorphism Profile Section */}
