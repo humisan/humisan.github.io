@@ -217,6 +217,136 @@
   }
 }
 
+/* Activities Section */
+.activitiesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: slideInUp 0.6s ease-out 0.5s both;
+}
+
+.activityCard {
+  background: rgba(102, 126, 234, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.activityCard:hover {
+  background: rgba(102, 126, 234, 0.12);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.activityHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.activityIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activityImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activityInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.activityType {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activityDetail {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.detailLabel {
+  color: rgba(102, 126, 234, 0.8);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.detailValue {
+  color: rgba(255, 255, 255, 0.8);
+  word-break: break-word;
+  flex: 1;
+}
+
+/* KV Data Section */
+.kvSection {
+  background: rgba(118, 75, 162, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(118, 75, 162, 0.25);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  animation: slideInUp 0.6s ease-out 0.6s both;
+}
+
+.kvTitle {
+  color: rgba(118, 75, 162, 0.9);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.kvItem {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.kvItem:last-child {
+  margin-bottom: 0;
+}
+
+.kvKey {
+  color: rgba(118, 75, 162, 0.8);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.kvValue {
+  color: rgba(255, 255, 255, 0.8);
+  word-break: break-word;
+  flex: 1;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .container {
@@ -228,7 +358,17 @@
     padding: 0.8rem 1rem;
   }
 
+  .activityCard,
+  .kvSection {
+    padding: 0.8rem 1rem;
+  }
+
   .albumArt {
+    width: 40px;
+    height: 40px;
+  }
+
+  .activityIcon {
     width: 40px;
     height: 40px;
   }
@@ -238,6 +378,15 @@
   }
 
   .artistName {
+    font-size: 0.8rem;
+  }
+
+  .activityType {
+    font-size: 0.9rem;
+  }
+
+  .activityDetail,
+  .kvItem {
     font-size: 0.8rem;
   }
 }
