@@ -135,6 +135,20 @@ export default function DiscordStatus() {
 
   return (
     <div className={styles.container}>
+      {/* Discord Status Banner */}
+      <div className={styles.bannerSection}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`https://lanyard.cnrad.dev/api/users/${DISCORD_USER_ID}?hideTimestamp=true`}
+          alt="Discord Status Banner"
+          className={styles.statusBanner}
+          onError={(e) => {
+            // バナーが読み込めない場合は代替コンテンツを表示
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      </div>
+
       {/* Discord Status */}
       <div className={styles.statusSection}>
         <div className={styles.statusHeader}>

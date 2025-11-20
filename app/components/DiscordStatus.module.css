@@ -1,9 +1,30 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
   width: 100%;
   margin-top: 1.5rem;
+}
+
+/* Discord Status Banner Section */
+.bannerSection {
+  animation: slideInUp 0.6s ease-out 0.1s both;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.statusBanner {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  border-radius: 12px;
+  display: block;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.2));
+}
+
+.statusBanner:hover {
+  filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.35));
 }
 
 /* Discord Status Section */
