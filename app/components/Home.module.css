@@ -1,266 +1,147 @@
+/* グラスモーフィズム プロフィールセクション */
 .profileSection {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  animation: slideUp 0.6s ease-out;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
 }
 
-@keyframes slideUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 .profileContainer {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-@media (max-width: 768px) {
-  .profileContainer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .profileImage {
   flex-shrink: 0;
-  width: 128px;
-  height: 128px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 3rem;
-  font-weight: bold;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 100;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 .profileImage:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
 }
 
 .profileContent h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0.5rem 0 0.25rem 0;
   font-size: 2.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -1px;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: -0.5px;
 }
 
 .profileContent p.title {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.25rem;
-  color: #764ba2;
-  font-weight: 600;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .profileContent p.description {
-  color: #555;
-  line-height: 1.8;
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  font-size: 0.95rem;
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
 
 .socialLinks {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-  .socialLinks {
-    justify-content: center;
-  }
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .socialLink {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1.5px solid rgba(102, 126, 234, 0.3);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 .socialLink:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.6);
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
 }
 
-.skillsSection {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  animation: slideUp 0.6s ease-out 0.2s both;
-}
-
-.skillsSection h3 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: #333;
-  border-bottom: 3px solid #667eea;
-  padding-bottom: 0.5rem;
-}
-
-.skillsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.skillCategory h4 {
-  font-size: 1.25rem;
-  color: #667eea;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.skillCategory ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skillCategory li {
-  padding: 0.5rem 0;
-  color: #555;
-  font-weight: 500;
-  position: relative;
-  padding-left: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.skillCategory li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: #764ba2;
-  font-weight: bold;
-}
-
-.skillCategory li:hover {
-  color: #667eea;
-  padding-left: 2rem;
-}
-
+/* 非表示セクション */
+.skillsSection,
 .blogSection {
-  animation: slideUp 0.6s ease-out 0.4s both;
+  display: none;
 }
 
-.blogSection h3 {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: #333;
-  border-bottom: 3px solid #667eea;
-  padding-bottom: 0.5rem;
-}
-
+.skillsGrid,
 .blogGrid {
-  display: grid;
-  gap: 1.5rem;
+  display: none;
 }
 
-.blogCard {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-left: 4px solid transparent;
-  overflow: hidden;
-  position: relative;
-}
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .profileSection {
+    padding: 2rem 1.5rem;
+    width: 85%;
+  }
 
-.blogCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), transparent);
-  transition: right 0.3s ease;
-  pointer-events: none;
-}
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
 
-.blogCard:hover {
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
-  transform: translateY(-5px);
-  border-left-color: #667eea;
-}
+  .profileContent h2 {
+    font-size: 2rem;
+  }
 
-.blogCard:hover::before {
-  right: 0;
-}
+  .profileContent p.title {
+    font-size: 1rem;
+  }
 
-.blogCardDate {
-  color: #999;
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.blogCardTitle {
-  margin: 0.5rem 0;
-  font-size: 1.25rem;
-  color: #333;
-  font-weight: 700;
-  transition: color 0.3s ease;
-}
-
-.blogCard:hover .blogCardTitle {
-  color: #667eea;
-}
-
-.blogCardExcerpt {
-  color: #666;
-  margin: 0.75rem 0;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-.blogCardLink {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  margin-top: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.blogCardLink::after {
-  content: ' →';
-  transition: transform 0.3s ease;
-}
-
-.blogCardLink:hover::after {
-  transform: translateX(5px);
+  .socialLink {
+    width: 40px;
+    height: 40px;
+  }
 }
