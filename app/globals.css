@@ -20,8 +20,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 600;
 
-  /* 羽入（ひぐらしのなく頃に）テーマの背景イラスト */
-  background-image: url('/background.jpg');
+  /* 羽入（ひぐらしのなく頃に）テーマの背景イラスト + グラデーション */
+  background:
+    linear-gradient(135deg, rgba(10, 0, 21, 0.7) 0%, rgba(26, 10, 46, 0.7) 25%, rgba(45, 10, 78, 0.7) 50%, rgba(61, 10, 95, 0.7) 75%, rgba(26, 0, 51, 0.7) 100%),
+    url('/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

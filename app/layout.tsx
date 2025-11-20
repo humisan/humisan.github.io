@@ -21,16 +21,8 @@ export const metadata: Metadata = {
     creator: "@humisan7626",
   },
   icons: {
-    icon: [
-      {
-        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23663EEA' width='100' height='100' rx='20'/><text x='50' y='65' font-size='60' font-weight='700' text-anchor='middle' fill='white' font-family='Arial'>H</text></svg>",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: {
-      url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23663EEA' width='180' height='180' rx='40'/><text x='90' y='135' font-size='100' font-weight='700' text-anchor='middle' fill='white' font-family='Arial'>H</text></svg>",
-      type: "image/svg+xml",
-    },
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

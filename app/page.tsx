@@ -11,7 +11,7 @@ export default function Home() {
           <div className={styles.profileImage}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://cdn.discordapp.com/avatars/556283324914728970/33c87df27368890c250aebebaf1c3183.png?size=512"
+              src="/icon.png"
               alt="Profile"
               className={styles.profileImg}
             />
