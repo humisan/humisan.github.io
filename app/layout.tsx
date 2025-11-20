@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import styles from "./components/Layout.module.css";
 
 export const metadata: Metadata = {
   title: "My Bio",
@@ -14,22 +15,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className="bg-gray-50 text-gray-900">
-        <nav className="bg-white shadow">
-          <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 className="text-2xl font-bold">Bio</h1>
-            <ul className="flex gap-6">
-              <li><Link href="/" className="hover:text-blue-600">Home</Link></li>
-              <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
+      <body>
+        <nav className={styles.navbar}>
+          <div className={styles.navContainer}>
+            <Link href="/" className={styles.navBrand}>
+              BIO
+            </Link>
+            <ul className={styles.navLinks}>
+              <li><Link href="/" className={styles.navLink}>Home</Link></li>
+              <li><Link href="/blog" className={styles.navLink}>Blog</Link></li>
             </ul>
           </div>
         </nav>
-        <main className="max-w-4xl mx-auto px-4 py-8">
+        <main className={styles.mainContent}>
           {children}
         </main>
-        <footer className="bg-gray-100 mt-12 py-8">
-          <div className="max-w-4xl mx-auto px-4 text-center text-gray-600">
-            <p>&copy; 2025. All rights reserved.</p>
+        <footer className={styles.footer}>
+          <div className="max-w-4xl mx-auto px-4">
+            <p className={styles.footerText}>&copy; 2025. All rights reserved.</p>
           </div>
         </footer>
       </body>

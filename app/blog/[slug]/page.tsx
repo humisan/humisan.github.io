@@ -107,16 +107,18 @@ const blogPosts: Record<string, { title: string; date: string; content: string }
   },
 };
 
+import styles from "../../components/Blog.module.css";
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = blogPosts[slug];
 
   if (!post) {
     return (
-      <div className="text-center py-12">
-        <h2 className="text-2xl font-bold text-gray-700">Post not found</h2>
-        <p className="text-gray-600 mt-2">The blog post you&apos;re looking for doesn&apos;t exist.</p>
-        <Link href="/blog" className="text-blue-600 hover:underline mt-4 inline-block">
+      <div className={styles.notFoundSection}>
+        <h2>Post not found</h2>
+        <p>The blog post you&apos;re looking for doesn&apos;t exist.</p>
+        <Link href="/blog" className={styles.blogBackLink}>
           ← Back to Blog
         </Link>
       </div>
@@ -124,15 +126,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   return (
-    <article className="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
-      <Link href="/blog" className="text-blue-600 hover:underline mb-6 inline-block">
+    <article className={styles.blogPostArticle}>
+      <Link href="/blog" className={styles.blogBackLink}>
         ← Back to Blog
       </Link>
-      <header className="mb-8">
-        <time className="text-gray-500">{post.date}</time>
-        <h1 className="text-4xl font-bold mt-2">{post.title}</h1>
+      <header className={styles.postHeader}>
+        <time className={styles.postDate}>{post.date}</time>
+        <h1 className={styles.postTitle}>{post.title}</h1>
       </header>
-      <div className="prose max-w-none">
+      <div className={styles.postContent}>
         {post.content.split('\n').map((line, index) => {
           if (line.startsWith('# ')) {
             return (
