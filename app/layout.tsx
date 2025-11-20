@@ -3,21 +3,21 @@ import "./globals.css";
 import styles from "./components/Layout.module.css";
 
 export const metadata: Metadata = {
-  title: "humisan | Developer Portfolio",
-  description: "Developer portfolio with modern glassmorphism design and Higurashi When They Cry theme",
+  title: "humisan - Developer",
+  description: "Creative developer exploring web design and code",
   metadataBase: new URL("https://hanyuu.lol"),
   openGraph: {
-    title: "humisan | Developer Portfolio",
-    description: "Developer portfolio with modern glassmorphism design and Higurashi When They Cry theme",
+    title: "humisan - Developer",
+    description: "Creative developer exploring web design and code",
     url: "https://hanyuu.lol",
-    siteName: "humisan's Bio",
+    siteName: "humisan",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "humisan | Developer Portfolio",
-    description: "Developer portfolio with modern glassmorphism design and Higurashi When They Cry theme",
+    title: "humisan - Developer",
+    description: "Creative developer exploring web design and code",
     creator: "@humisan7626",
   },
   icons: {
