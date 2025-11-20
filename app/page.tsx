@@ -1,5 +1,6 @@
 import styles from "./components/Home.module.css";
 import DiscordStatus from "./components/DiscordStatus";
+import AccessCounter from "./components/AccessCounter";
 
 export default function Home() {
   return (
@@ -38,6 +39,8 @@ export default function Home() {
                 </svg>
               </a>
             </div>
+            {/* Access Counter */}
+            <AccessCounter />
             {/* Discord Status & Spotify */}
             <DiscordStatus />
           </div>
