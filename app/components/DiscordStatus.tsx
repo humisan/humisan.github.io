@@ -16,6 +16,7 @@ const DISCORD_USER_ID = '556283324914728970';
 
 export default function DiscordStatus() {
   const [status, setStatus] = useState<string>('offline');
+  const [username, setUsername] = useState<string>('');
   const [spotify, setSpotify] = useState<SpotifyActivity | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -33,6 +34,11 @@ export default function DiscordStatus() {
 
         if (result.data) {
           setStatus(result.data.discord_status || 'offline');
+
+          // Discord ユーザー名を取得
+          if (result.data.discord_user) {
+            setUsername(result.data.discord_user.username || '');
+          }
 
           // Spotify アクティビティを抽出
           const spotifyActivity = result.data.activities?.find(
@@ -67,6 +73,11 @@ export default function DiscordStatus() {
           // Lanyard WebSocket データはあらゆる時点で来る
           if (d) {
             setStatus(d.discord_status || 'offline');
+
+            // Discord ユーザー名を取得
+            if (d.discord_user) {
+              setUsername(d.discord_user.username || '');
+            }
 
             const spotifyActivity = d.activities?.find(
               (activity: any) => activity.name === 'Spotify'
@@ -133,9 +144,14 @@ export default function DiscordStatus() {
               backgroundColor: statusColors[status] || '#747f8d',
             }}
           ></span>
-          <span className={styles.statusText}>
-            {statusTexts[status] || 'Offline'}
-          </span>
+          <div className={styles.statusInfo}>
+            <span className={styles.statusText}>
+              {statusTexts[status] || 'Offline'}
+            </span>
+            {username && (
+              <span className={styles.username}>@{username}</span>
+            )}
+          </div>
         </div>
       </div>
 
