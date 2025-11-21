@@ -2,6 +2,7 @@
 
 import styles from './MobileHome.module.css';
 import DiscordStatus from './DiscordStatus';
+import SpotifyStatus from './SpotifyStatus';
 
 export default function MobileHome() {
   return (
@@ -43,6 +44,9 @@ export default function MobileHome() {
             </svg>
           </a>
         </div>
+
+        {/* Spotify Status */}
+        <SpotifyStatus />
 
         {/* Discord Status */}
         <DiscordStatus />

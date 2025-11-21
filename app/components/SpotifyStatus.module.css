@@ -1,0 +1,141 @@
+.spotifySection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+.spotifySection:hover {
+  background: rgba(88, 101, 242, 0.15);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.albumArtContainer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.albumArt {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.playingIndicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: #1DB954;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.trackInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.status {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.songTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artistName {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.albumName {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(102, 126, 234, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #1DB954, #1ed760);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.timeInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .spotifySection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .albumArt {
+    width: 100%;
+    height: auto;
+  }
+
+  .songTitle {
+    font-size: 14px;
+  }
+
+  .artistName {
+    font-size: 12px;
+  }
+}
