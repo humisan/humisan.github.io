@@ -4,7 +4,6 @@ import { useLanguage } from '../context/LanguageContext';
 import styles from './MobileHome.module.css';
 import DiscordStatus from './DiscordStatus';
 import SpotifyStatus from './SpotifyStatus';
-import GitHubStats from './GitHubStats';
 
 export default function MobileHome() {
   const { t } = useLanguage();
@@ -48,9 +47,6 @@ export default function MobileHome() {
             </svg>
           </a>
         </div>
-
-        {/* GitHub Statistics */}
-        <GitHubStats />
 
         {/* Spotify Status */}
         <SpotifyStatus />
