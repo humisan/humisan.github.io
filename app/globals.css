@@ -21,7 +21,7 @@ body {
   font-weight: 600;
 
   /* テーマ対応背景 */
-  background: var(--bg-primary);
+  background: var(--bg-primary), url('/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

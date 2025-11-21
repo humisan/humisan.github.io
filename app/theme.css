@@ -16,9 +16,9 @@
 :root[data-theme='light'] {
   --bg-primary: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 25%, #ddd4ff 50%, #d0c4ff 75%, #e8d4ff 100%);
   --bg-secondary: rgba(245, 243, 255, 0.9);
-  --text-primary: #1a1a2e;
-  --text-secondary: rgba(26, 26, 46, 0.7);
-  --text-tertiary: rgba(26, 26, 46, 0.6);
+  --text-primary: #000000;
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-tertiary: rgba(0, 0, 0, 0.6);
   --border-color: rgba(102, 126, 234, 0.2);
   --glass-bg: rgba(200, 190, 255, 0.15);
   --glass-border: rgba(102, 126, 234, 0.4);
