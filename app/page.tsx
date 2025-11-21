@@ -4,6 +4,7 @@ import { useIsMobile } from "./hooks/useIsMobile";
 import styles from "./components/Home.module.css";
 import DiscordStatus from "./components/DiscordStatus";
 import SpotifyStatus from "./components/SpotifyStatus";
+import GitHubStats from "./components/GitHubStats";
 import MobileHome from "./components/MobileHome";
 
 export default function Home() {
@@ -53,6 +54,8 @@ export default function Home() {
             </div>
             {/* Spotify Status */}
             <SpotifyStatus />
+            {/* GitHub Statistics */}
+            <GitHubStats />
             {/* Discord Status */}
             <DiscordStatus />
           </div>

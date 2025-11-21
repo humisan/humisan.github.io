@@ -3,6 +3,7 @@
 import styles from './MobileHome.module.css';
 import DiscordStatus from './DiscordStatus';
 import SpotifyStatus from './SpotifyStatus';
+import GitHubStats from './GitHubStats';
 
 export default function MobileHome() {
   return (
@@ -47,6 +48,9 @@ export default function MobileHome() {
 
         {/* Spotify Status */}
         <SpotifyStatus />
+
+        {/* GitHub Statistics */}
+        <GitHubStats />
 
         {/* Discord Status */}
         <DiscordStatus />
