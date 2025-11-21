@@ -49,11 +49,11 @@ export default function MobileHome() {
           </a>
         </div>
 
-        {/* Spotify Status */}
-        <SpotifyStatus />
-
         {/* GitHub Statistics */}
         <GitHubStats />
+
+        {/* Spotify Status */}
+        <SpotifyStatus />
 
         {/* Discord Status */}
         <DiscordStatus />

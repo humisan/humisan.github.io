@@ -17,17 +17,17 @@ const translations = {
     'nav.github': 'GitHub',
     'nav.twitter': 'Twitter',
     'nav.youtube': 'YouTube',
-    'profile.title': 'Developer',
-    'profile.description': 'Creative developer exploring web design and code',
-    'profile.welcome': 'Welcome to my portfolio',
-    'spotify.now_playing': '🎵 Now Playing',
-    'spotify.last_played': '⏸️ Last Played',
-    'github.title': '🐙 GitHub Statistics',
-    'github.repositories': 'Repositories',
-    'github.followers': 'Followers',
-    'github.following': 'Following',
-    'github.top_languages': 'Top Languages',
-    'github.top_repositories': 'Top Repositories',
+    'profile.title': 'デベロッパー',
+    'profile.description': 'ウェブデザインとコードを探索するクリエイティブデベロッパー',
+    'profile.welcome': 'ようこそ',
+    'spotify.now_playing': '🎵 再生中',
+    'spotify.last_played': '⏸️ 最後に再生',
+    'github.title': '🐙 GitHub統計',
+    'github.repositories': 'リポジトリ',
+    'github.followers': 'フォロワー',
+    'github.following': 'フォロー中',
+    'github.top_languages': 'トップ言語',
+    'github.top_repositories': 'トップリポジトリ',
   },
   en: {
     'nav.github': 'GitHub',
@@ -49,7 +49,6 @@ const translations = {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('ja');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Load language preference from localStorage
@@ -57,7 +56,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage && ['ja', 'en'].includes(savedLanguage)) {
       setLanguageState(savedLanguage);
     }
-    setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -68,11 +66,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['ja']] || key;
   };
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

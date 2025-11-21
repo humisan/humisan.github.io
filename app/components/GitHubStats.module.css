@@ -1,12 +1,8 @@
 .gitHubSection {
-  padding: 16px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 0;
   color: var(--text-primary);
-  margin: 12px 0;
+  margin: 20px 0 0 0;
+  border-top: 1px solid var(--glass-border);
 }
 
 .header {
@@ -15,9 +11,9 @@
 }
 
 .title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -34,21 +30,21 @@
 
 .stat {
   text-align: center;
-  padding: 12px;
+  padding: 16px;
   background: rgba(102, 126, 234, 0.05);
   border-radius: 8px;
   border: 1px solid var(--glass-border);
 }
 
 .statValue {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .statLabel {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -56,13 +52,13 @@
 
 /* Languages Section */
 .languagesSection {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .sectionTitle {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;

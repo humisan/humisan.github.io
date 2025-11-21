@@ -21,7 +21,7 @@ body {
   font-weight: 600;
 
   /* テーマ対応背景 */
-  background: var(--bg-primary), url('/background.jpg');
+  background-image: url('/background.jpg'), var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -32,7 +32,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* アニメーション背景レイヤー 1 - 羽入テーマ（背景イラスト調整） */
