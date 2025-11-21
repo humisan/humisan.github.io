@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./theme.css";
 import styles from "./components/Layout.module.css";
+import { RootClientLayout } from "./components/RootClientLayout";
 
 export const metadata: Metadata = {
   title: "humisan - Developer",
@@ -32,14 +34,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <main className={styles.mainContent}>
-          {children}
-        </main>
-        <footer className={styles.footer}>
-          <p className={styles.footerText}>&copy; 2025 All Rights Reserved</p>
-        </footer>
+        <RootClientLayout>
+          <main className={styles.mainContent}>
+            {children}
+          </main>
+          <footer className={styles.footer}>
+            <p className={styles.footerText}>&copy; 2025 All Rights Reserved</p>
+          </footer>
+        </RootClientLayout>
       </body>
     </html>
   );

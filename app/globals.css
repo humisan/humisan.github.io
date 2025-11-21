@@ -20,10 +20,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 600;
 
-  /* 羽入（ひぐらしのなく頃に）テーマの背景イラスト + グラデーション */
-  background:
-    linear-gradient(135deg, rgba(10, 0, 21, 0.7) 0%, rgba(26, 10, 46, 0.7) 25%, rgba(45, 10, 78, 0.7) 50%, rgba(61, 10, 95, 0.7) 75%, rgba(26, 0, 51, 0.7) 100%),
-    url('/background.jpg');
+  /* テーマ対応背景 */
+  background: var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -31,9 +29,10 @@ body {
   min-height: 100vh;
   position: relative;
 
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* アニメーション背景レイヤー 1 - 羽入テーマ（背景イラスト調整） */
