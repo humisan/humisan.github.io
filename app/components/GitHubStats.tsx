@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './GitHubStats.module.css';
 
 interface Repository {
@@ -32,6 +33,7 @@ interface GitHubStats {
 }
 
 export default function GitHubStatsComponent() {
+  const { t } = useLanguage();
   const [stats, setStats] = useState<GitHubStats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -62,29 +64,29 @@ export default function GitHubStatsComponent() {
   return (
     <div className={styles.gitHubSection}>
       <a href={stats.profileUrl} target="_blank" rel="noopener noreferrer" className={styles.header}>
-        <h3 className={styles.title}>🐙 GitHub Statistics</h3>
+        <h3 className={styles.title}>{t('github.title')}</h3>
       </a>
 
       {/* Stats Row */}
       <div className={styles.statsRow}>
         <div className={styles.stat}>
           <div className={styles.statValue}>{stats.publicRepos}</div>
-          <div className={styles.statLabel}>Repositories</div>
+          <div className={styles.statLabel}>{t('github.repositories')}</div>
         </div>
         <div className={styles.stat}>
           <div className={styles.statValue}>{stats.followers}</div>
-          <div className={styles.statLabel}>Followers</div>
+          <div className={styles.statLabel}>{t('github.followers')}</div>
         </div>
         <div className={styles.stat}>
           <div className={styles.statValue}>{stats.following}</div>
-          <div className={styles.statLabel}>Following</div>
+          <div className={styles.statLabel}>{t('github.following')}</div>
         </div>
       </div>
 
       {/* Top Languages */}
       {stats.topLanguages && stats.topLanguages.length > 0 && (
         <div className={styles.languagesSection}>
-          <h4 className={styles.sectionTitle}>Top Languages</h4>
+          <h4 className={styles.sectionTitle}>{t('github.top_languages')}</h4>
           <div className={styles.languagesList}>
             {stats.topLanguages.map(lang => (
               <div key={lang.name} className={styles.languageItem}>
@@ -105,7 +107,7 @@ export default function GitHubStatsComponent() {
       {/* Top Repositories */}
       {stats.topRepositories && stats.topRepositories.length > 0 && (
         <div className={styles.repositoriesSection}>
-          <h4 className={styles.sectionTitle}>Top Repositories</h4>
+          <h4 className={styles.sectionTitle}>{t('github.top_repositories')}</h4>
           <div className={styles.repositoriesList}>
             {stats.topRepositories.map(repo => (
               <a

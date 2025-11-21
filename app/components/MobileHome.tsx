@@ -1,11 +1,14 @@
 'use client';
 
+import { useLanguage } from '../context/LanguageContext';
 import styles from './MobileHome.module.css';
 import DiscordStatus from './DiscordStatus';
 import SpotifyStatus from './SpotifyStatus';
 import GitHubStats from './GitHubStats';
 
 export default function MobileHome() {
+  const { t } = useLanguage();
+
   return (
     <div className={styles.container}>
       {/* Profile Section */}
@@ -23,8 +26,8 @@ export default function MobileHome() {
         {/* Profile Info */}
         <div className={styles.profileInfo}>
           <h1 className={styles.name}>humisan</h1>
-          <p className={styles.title}>Developer</p>
-          <p className={styles.description}>Creative developer exploring web design and code</p>
+          <p className={styles.title}>{t('profile.title')}</p>
+          <p className={styles.description}>{t('profile.description')}</p>
         </div>
 
         {/* Social Links */}

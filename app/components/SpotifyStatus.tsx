@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './SpotifyStatus.module.css';
 
 interface SpotifyTrack {
@@ -17,6 +18,7 @@ interface SpotifyTrack {
 }
 
 export default function SpotifyStatus() {
+  const { t } = useLanguage();
   const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -70,7 +72,7 @@ export default function SpotifyStatus() {
 
         <div className={styles.trackInfo}>
           <div className={styles.status}>
-            {track.isPlaying ? '🎵 Now Playing' : '⏸️ Last Played'}
+            {track.isPlaying ? t('spotify.now_playing') : t('spotify.last_played')}
           </div>
           <h3 className={styles.songTitle}>{track.title}</h3>
           <p className={styles.artistName}>{track.artist}</p>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useIsMobile } from "./hooks/useIsMobile";
+import { useLanguage } from "./context/LanguageContext";
 import styles from "./components/Home.module.css";
 import DiscordStatus from "./components/DiscordStatus";
 import SpotifyStatus from "./components/SpotifyStatus";
@@ -9,6 +10,7 @@ import MobileHome from "./components/MobileHome";
 
 export default function Home() {
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
 
   // モバイルの場合
   if (isMobile) {
@@ -31,9 +33,9 @@ export default function Home() {
           </div>
           <div className={styles.profileContent}>
             <h2>humisan</h2>
-            <p className={styles.title}>Developer</p>
+            <p className={styles.title}>{t('profile.title')}</p>
             <p className={styles.description}>
-              Welcome to my portfolio
+              {t('profile.description')}
             </p>
             <div className={styles.socialLinks}>
               <a href="https://github.com/humisan" target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="GitHub">

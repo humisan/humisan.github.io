@@ -1,0 +1,47 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  display: flex;
+  gap: 8px;
+  background: var(--glass-bg);
+  padding: 8px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.button {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  color: var(--text-primary);
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.button.active {
+  background: rgba(102, 126, 234, 0.3);
+  color: var(--text-primary);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+/* Avoid overlap with theme toggle */
+@media (max-width: 768px) {
+  .container {
+    bottom: 70px;
+    right: 20px;
+  }
+}
