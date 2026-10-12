@@ -434,3 +434,14 @@ body { position: relative; isolation: isolate; }
 @media (max-width: 700px) { .game-audio-controls { gap: 12px; } .game-audio-controls label { gap: 8px; } .game-audio-controls p { width: 100%; margin-left: 0; } .game-audio-controls input { width: 85px; } }
 
 .about-narrative p:not(.section-label) { white-space: pre-line; }
+
+/* MUI controls keep the site's spacing and summer palette. */
+.language-switch button { border: 0; border-radius: 10px !important; }
+.focus-tabs button, .server-filters button { margin-left: 0 !important; border-radius: 100px !important; }
+.game-audio-controls .volume-slider { width: 100px; padding-block: 16px; }
+.game-audio-controls label > .volume-slider { width: 100px; }
+.game-audio-controls label > span:last-child { width: 35px; }
+.game-target { min-width: 0 !important; padding: 0 !important; }
+.role-badge .MuiChip-label { padding-inline: 0; }
+.server-tags li { padding: 0; border: 0; }
+@media (prefers-reduced-motion: reduce) { .MuiTouchRipple-root { display: none; } }

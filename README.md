@@ -60,3 +60,10 @@ Python 3の標準サーバーで静的出力も確認できます。
 公開変更を戻す場合は、対象コミットをrevertするPRを作り、同じ検証を通してから `main` に統合してください。GitHub履歴を書き換える必要はありません。リニューアル前のソース・公開ファイル・Git履歴のバックアップは、今回の作業チャットの成果物として別途保存しています。
 
 本番配信はHTML・CSS・JavaScript・画像の静的ファイルのみです。外部データの自動取得やサーバー側API、認証情報は必要ありません。
+
+## UI部品
+
+MUIのButton・IconButton・ToggleButtonGroup・Chip・Sliderを使っています
+Next.jsのAppRouterCacheProviderでCSSを静的HTMLのheadへ出力し、既存CSSと競合しないようmuiレイヤーにまとめています
+MUIテーマは昼夜の切替と連動します
+React 18に合わせてreact-isは18.3.1に固定しています

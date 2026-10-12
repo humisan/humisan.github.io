@@ -75,3 +75,14 @@ test('link previews describe the current portfolio rather than the previous web-
   assert.ok(!html.includes('humisan - Developer'));
   assert.ok(html.includes('rel="icon" href="/profile-summer.png"'));
 });
+
+
+test('MUI styles are exported in the document head on every route', async () => {
+  for (const route of ['', 'about/', 'servers/', 'links/', 'play/']) {
+    const content = await readFile(new URL(`out/${route}index.html`, root), 'utf8');
+    const head = content.slice(0, content.indexOf('</head>'));
+    assert.match(head, /data-emotion=/);
+    assert.match(head, /@layer mui/);
+    assert.ok(content.includes('MuiToggleButton-root'));
+  }
+});

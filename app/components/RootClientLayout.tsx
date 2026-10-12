@@ -1,6 +1,7 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { IconButton, ToggleButton, ToggleButtonGroup, ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material';
+import { ReactNode, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Ambience from './Ambience';
@@ -25,25 +26,39 @@ function SiteChrome({ children }: { children: ReactNode }) {
         <Link href="/play/" aria-current={pathname.startsWith('/play') ? 'page' : undefined}>{language === 'ja' ? '遊ぶ' : 'Play'}<span className="nav-play-star" aria-hidden="true">✦</span></Link>
       </nav>
       <div className="preferences">
-        <div className="language-switch" role="group" aria-label={t('language.label')}>
-          <button type="button" lang="ja" aria-label="日本語" aria-pressed={language === 'ja'} onClick={() => setLanguage('ja')}>JP</button>
-          <span aria-hidden="true">/</span>
-          <button type="button" lang="en" aria-label="English" aria-pressed={language === 'en'} onClick={() => setLanguage('en')}>EN</button>
-        </div>
-        <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label={t(theme === 'dark' ? 'theme.light' : 'theme.dark')} title={t(theme === 'dark' ? 'theme.light' : 'theme.dark')}><Icon name={theme === 'dark' ? 'sun' : 'moon'} /></button>
+        <ToggleButtonGroup className="language-switch" exclusive value={language} onChange={(_, value) => { if (value === 'ja' || value === 'en') setLanguage(value); }} aria-label={t('language.label')}>
+          <ToggleButton value="ja" lang="ja" aria-label="日本語">JP</ToggleButton>
+          <ToggleButton value="en" lang="en" aria-label="English">EN</ToggleButton>
+        </ToggleButtonGroup>
+        <IconButton className="theme-toggle" onClick={toggleTheme} aria-label={t(theme === 'dark' ? 'theme.light' : 'theme.dark')} title={t(theme === 'dark' ? 'theme.light' : 'theme.dark')}><Icon name={theme === 'dark' ? 'sun' : 'moon'} /></IconButton>
       </div>
     </header>
     <main id="main" tabIndex={-1}>{children}</main>
     <footer className="site-footer">
       <div className="footer-inner">
         <div><p className="footer-message">{t('footer.message')}<Icon name="sparkle" /></p><p className="copyright">© {new Date().getFullYear()} humisan</p></div>
-        <a className="back-top" href="#top" aria-label={t('footer.top')}><Icon name="arrow" /></a>
+        <IconButton component="a" className="back-top" href="#top" aria-label={t('footer.top')}><Icon name="arrow" /></IconButton>
       </div>
       <div className="footer-word" aria-hidden="true">humisan.</div>
     </footer>
   </>;
 }
 
+function MaterialTheme({ children }: { children: ReactNode }) {
+  const { theme } = useTheme();
+  const materialTheme = useMemo(() => createTheme({
+    palette: { mode: theme, primary: { main: theme === 'dark' ? '#9dbbff' : '#4269ac' }, secondary: { main: '#9b86c6' } },
+    typography: { fontFamily: 'Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif', button: { textTransform: 'none' } },
+    shape: { borderRadius: 16 },
+    components: {
+      MuiButton: { defaultProps: { disableElevation: true }, styleOverrides: { root: { minHeight: 44 } } },
+      MuiToggleButton: { styleOverrides: { root: { minHeight: 44, textTransform: 'none' } } },
+      MuiIconButton: { styleOverrides: { root: { minWidth: 44, minHeight: 44 } } },
+    },
+  }), [theme]);
+  return <MuiThemeProvider theme={materialTheme}>{children}</MuiThemeProvider>;
+}
+
 export function RootClientLayout({ children }: { children: ReactNode }) {
-  return <ThemeProvider><LanguageProvider><SiteChrome>{children}</SiteChrome></LanguageProvider></ThemeProvider>;
+  return <ThemeProvider><MaterialTheme><LanguageProvider><SiteChrome>{children}</SiteChrome></LanguageProvider></MaterialTheme></ThemeProvider>;
 }
