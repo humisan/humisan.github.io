@@ -1,8 +1,10 @@
+'use client';
+
+import { useLanguage } from './context/LanguageContext';
+import Icon from './components/Icons';
+import Link from 'next/link';
+
 export default function NotFound() {
-  return (
-    <div style={{ textAlign: 'center', padding: '2rem', color: 'rgba(255, 255, 255, 0.7)' }}>
-      <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>404</h1>
-      <p>Page not found</p>
-    </div>
-  );
+  const { t } = useLanguage();
+  return <section className="not-found content-width"><p className="eyebrow">404 / LOST IN THE CLOUDS</p><h1>{t('notFound.title')}</h1><p>{t('notFound.description')}</p><Link href="/" className="primary-link">{t('notFound.home')}<Icon name="arrow" /></Link></section>;
 }

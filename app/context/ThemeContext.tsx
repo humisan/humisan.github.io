@@ -3,55 +3,43 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
-
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
 }
-
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    // ローカルストレージから取得、またはシステム設定に従う
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setTheme(initialTheme);
-    document.documentElement.setAttribute('data-theme', initialTheme);
-    setMounted(true);
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') setTheme(saved);
+    } catch {
+      // Default to daylight when local storage is unavailable.
+    }
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', newTheme);
-      document.documentElement.setAttribute('data-theme', newTheme);
-      return newTheme;
-    });
-  };
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
-  // ハイドレーション対策
-  if (!mounted) {
-    return <>{children}</>;
+  function toggleTheme() {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // The selected theme still works for this visit.
+    }
   }
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  // Provider の外でも safe に使えるようにデフォルト値を返す
-  if (context === undefined) {
-    return { theme: 'dark' as Theme, toggleTheme: () => {} };
-  }
+  if (!context) throw new Error('useTheme requires ThemeProvider');
   return context;
 }
