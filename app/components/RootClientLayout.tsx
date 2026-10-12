@@ -36,7 +36,7 @@ function SiteChrome({ children }: { children: ReactNode }) {
     <main id="main" tabIndex={-1}>{children}</main>
     <footer className="site-footer">
       <div className="footer-inner">
-        <div><p className="footer-message">{t('footer.message')}<Icon name="sparkle" /></p><p className="copyright">© {new Date().getFullYear()} humisan</p></div>
+        <div><p className="footer-message footer-motto">STAY SHARP.</p><p className="copyright">© {new Date().getFullYear()} humisan</p></div>
         <IconButton component="a" className="back-top" href="#top" aria-label={t('footer.top')}><Icon name="arrow" /></IconButton>
       </div>
       <div className="footer-word" aria-hidden="true">humisan.</div>

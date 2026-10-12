@@ -445,3 +445,5 @@ body { position: relative; isolation: isolate; }
 .role-badge .MuiChip-label { padding-inline: 0; }
 .server-tags li { padding: 0; border: 0; }
 @media (prefers-reduced-motion: reduce) { .MuiTouchRipple-root { display: none; } }
+
+.footer-motto { font-family: monospace; font-size: 15px; font-weight: 700; letter-spacing: .16em; }

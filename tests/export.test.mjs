@@ -86,3 +86,10 @@ test('MUI styles are exported in the document head on every route', async () => 
     assert.ok(content.includes('MuiToggleButton-root'));
   }
 });
+
+
+test('the footer uses the chosen motto', () => {
+  assert.ok(html.includes('STAY SHARP.'));
+  assert.ok(!html.includes('また、ふらっと'));
+  assert.ok(!html.includes('humisanのホームページ'));
+});
