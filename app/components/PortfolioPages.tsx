@@ -14,7 +14,7 @@ export function AboutPage() {
   return <article className="interior-page content-width">
     <header className="page-intro"><p className="section-label">ABOUT ME</p><h1>{ja ? 'ゲームの裏側も、つくっていく' : 'Building behind the game.'}</h1><p>{ja ? 'JavaとMinecraft\n遊ぶ場所を、つくる側から' : 'Java and Minecraft. Creating the places we play in.'}</p></header>
     <section className="profile-story" aria-labelledby="profile-name">
-      <div className="profile-avatar"><Image src="/icon.png" alt="humisan" width={1024} height={1024} sizes="(max-width: 700px) 95px, 140px" /></div>
+      <div className="profile-avatar"><Image src="/profile-summer.png" alt="humisan" width={1024} height={1024} sizes="(max-width: 700px) 95px, 140px" /></div>
       <div><p className="eyebrow">JAVA DEVELOPER / SERVER OPERATOR</p><h2 id="profile-name">humisan</h2><p>{ja ? 'Javaでのプラグイン開発と、Minecraftサーバーの開発・運営をしています\nコードを書きながら、遊ぶ場所をつくる側にも関わっています' : 'I develop Java plugins and work on Minecraft server development and operations.\nI write code and help build the places we play in.'}</p></div>
     </section>
     <section className="about-narrative" aria-label={ja ? '詳しい自己紹介' : 'More about me'}>

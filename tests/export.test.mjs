@@ -31,7 +31,7 @@ test('external links use HTTPS and protect the opener', () => {
 test('Japanese content, canonical URL, and social image exist without JavaScript', () => {
   assert.match(html, /<html[^>]*lang="ja"/);
   assert.match(html, /rel="canonical" href="https:\/\/hanyuu\.lol\/?"/);
-  assert.match(html, /property="og:image" content="https:\/\/hanyuu\.lol\/icon\.png"/);
+  assert.match(html, /property="og:image" content="https:\/\/hanyuu\.lol\/profile-summer\.png"/);
   assert.equal([...html.matchAll(/<h1(?:\s|>)/g)].length, 1);
   assert.match(html, /alt="[^"]+"/);
 });

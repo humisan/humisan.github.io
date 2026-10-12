@@ -12,10 +12,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     title, description, url: '/', siteName: 'humisan', type: 'website', locale: 'ja_JP', alternateLocale: ['en_US'],
-    images: [{ url: '/icon.png', width: 1024, height: 1024, alt: 'humisan' }],
+    images: [{ url: '/profile-summer.png', width: 1024, height: 1024, alt: 'humisan' }],
   },
-  twitter: { card: 'summary', title, description, creator: '@humisan7626', images: ['/icon.png'] },
-  icons: { icon: '/icon.png', apple: '/icon.png' },
+  twitter: { card: 'summary', title, description, creator: '@humisan7626', images: ['/profile-summer.png'] },
+  icons: { icon: '/profile-summer.png', apple: '/profile-summer.png' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
