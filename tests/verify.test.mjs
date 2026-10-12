@@ -13,7 +13,7 @@ async function load(file){
   const data='data:text/javascript;base64,'+Buffer.from(code).toString('base64');cache.set(key,data);return data;
 }
 const {verifyRecord}=await import(await load('../worker/verify.ts'));
-const {newDinoGame,advanceDino,jumpDino}=await import(await load('../app/lib/dino-game.ts'));
+const {newDinoGame,advanceDino,jumpDino}=await import(await load('../app/lib/dino-game-v1.ts'));
 test('Dino replay verifies actual runs at different rendering frame rates',()=>{
   for(const fps of [30,60,120]){
     const seed=123;let value=seed; const random=()=>{value=(Math.imul(value,1664525)+1013904223)>>>0;return value/4294967296;};

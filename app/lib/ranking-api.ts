@@ -1,5 +1,5 @@
-export type RankedGame = 'rush' | 'catch' | 'dino';
-export interface RankedSession { id: string; seed: number; game: RankedGame; }
+export type RankedGame = 'rush' | 'catch' | 'dino' | 'dino-v2';
+export interface RankedSession { id: string; seed: number; game: RankedGame; width?: number; }
 export interface RankingEntry { name: string; score: number; created: number; }
 const API = process.env.NEXT_PUBLIC_GAMES_API || 'https://humisan-games.f14518887.workers.dev';
 export async function rankingApi<T>(path: string, body?: unknown): Promise<T> {

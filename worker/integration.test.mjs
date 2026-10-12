@@ -18,12 +18,24 @@ test('real local Worker rejects abuse and saves a result exactly once', async()=
   assert.equal((await request('/scores',body)).status,400);
   const catchSession=await (await request('/sessions',{game:'catch'})).json();
   const dinoSession=await (await request('/sessions',{game:'dino'})).json();
-  const dinoCompiled=ts.transpileModule(await readFile(new URL('../app/lib/dino-game.ts',import.meta.url),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.ES2020}}).outputText;
+  const dinoCompiled=ts.transpileModule(await readFile(new URL('../app/lib/dino-game-v1.ts',import.meta.url),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.ES2020}}).outputText;
   const {newDinoGame,advanceDino}=await import(`data:text/javascript;base64,${Buffer.from(dinoCompiled).toString('base64')}`);
   let dino=newDinoGame();let value=dinoSession.seed;
   const random=()=>{value=(Math.imul(value,1664525)+1013904223)>>>0;return value/4294967296;};
   while(!dino.over)dino=advanceDino(dino,1/60,random);
+  const classic=await (await request('/sessions',{game:'dino-v2',width:600})).json();
+  const classicCompiled=ts.transpileModule(await readFile(new URL('../app/lib/dino-game.ts',import.meta.url),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.ES2020}}).outputText;
+  const classicEngine=await import(`data:text/javascript;base64,${Buffer.from(classicCompiled).toString('base64')}`);
+  let classicState=classicEngine.applyDinoInput(classicEngine.newDinoGame(classic.seed,600),'jump');
+  while(!classicState.over)classicState=classicEngine.stepDino(classicState);
+  assert.equal((await request('/scores',{id:classic.id,game:'dino-v2',name:'LocalQA',record:{version:2}})).status,400);
   await new Promise(resolve=>setTimeout(resolve,30100));
+  const checkpoint={id:classic.id,game:'dino-v2',endTick:classicState.tick,inputs:[{tick:0,action:'jump'}]};
+  const checkpointResult=await request('/checkpoint',checkpoint);assert.equal(checkpointResult.status,200);
+  assert.equal((await checkpointResult.json()).score,classicEngine.dinoScore(classicState));
+  assert.equal((await request('/checkpoint',checkpoint)).status,200);
+  assert.equal((await request('/scores',{id:classic.id,game:'dino-v2',name:'LocalQA',record:{version:2}})).status,201);
+
   const catchRecord=[{id:1,t:200},{id:2,t:900}];
   assert.equal((await request('/scores',{id:catchSession.id,game:'catch',name:'LocalQA',record:catchRecord})).status,201);
   assert.equal((await request('/scores',{id:dinoSession.id,game:'dino',name:'LocalQA',record:{jumps:[],elapsed:dino.time*1000}})).status,201);
