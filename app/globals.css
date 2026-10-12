@@ -434,6 +434,26 @@ body { position: relative; isolation: isolate; }
 @media (max-width: 700px) { .game-audio-controls { gap: 12px; } .game-audio-controls label { gap: 8px; } .game-audio-controls p { width: 100%; margin-left: 0; } .game-audio-controls input { width: 85px; } }
 
 .about-narrative p:not(.section-label) { white-space: pre-line; }
+.favorite-music { margin: 0 0 80px; }
+.music-heading h2 { font-size: 26px; font-weight: 550; margin: 17px 0 28px; }
+.music-feature { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 48px; align-items: center; }
+.music-photo { margin: 0; }
+.music-photo img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.music-photo figcaption { margin-top: 10px; font-size: 11px; color: var(--muted); }
+.music-photo figcaption a:hover { text-decoration: underline; }
+.music-details { min-width: 0; }
+.music-details h3 { font-size: clamp(26px, 4vw, 40px); letter-spacing: -.035em; margin: 0 0 18px; }
+.music-caption { color: var(--muted); font-size: 14px; }
+.music-tracks { list-style: none; margin: 20px 0; padding: 0; }
+.music-tracks li { border-top: 1px solid var(--line); }
+.music-tracks li:last-child { border-bottom: 1px solid var(--line); }
+.music-tracks a { display: flex; align-items: center; gap: 20px; padding: 20px 8px; border-radius: 4px; }
+.music-tracks a:hover { background: var(--surface); }
+.music-track-number { color: var(--muted); font-size: 12px; }
+.music-track-title { flex: 1; font-size: 21px; font-weight: 600; }
+.music-track-title small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; margin-top: 6px; }
+.music-tracks svg { width: 20px; height: 20px; }
+@media (max-width: 700px) { .favorite-music { margin-bottom: 50px; } .music-feature { grid-template-columns: minmax(0, 1fr); gap: 28px; } .music-photo { max-width: 360px; } .music-heading h2 { font-size: 23px; } }
 
 /* MUI controls keep the site's spacing and summer palette. */
 .language-switch button { border: 0; border-radius: 10px !important; }
