@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { RootClientLayout } from './components/RootClientLayout';
 
-const title = 'humisan — Java・Minecraftサーバー開発';
-const description = 'Javaでのプラグイン開発とMinecraftサーバーの開発・運営に取り組むhumisanのポートフォリオ。技術・活動・SNSを紹介します。';
+const title = 'humisan | Java開発とMinecraftサーバー運営';
+const description = 'Javaでのプラグイン開発とMinecraftサーバーの開発・運営をするhumisanのポートフォリオ｜GankMC・LzPvP・日ノ本鯖での活動と使用技術を紹介';
 
 export const metadata: Metadata = {
   title,
