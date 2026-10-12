@@ -486,5 +486,16 @@ body { position: relative; isolation: isolate; }
 .rush-target { aspect-ratio: 40 / 18; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--ink); }
 .rush-target svg { display: block; width: 100%; height: 100%; }
 
-.MuiButton-contained { color: #fff; }
-[data-theme="dark"] .MuiButton-contained { color: #171f32; }
+.MuiButton-contained { color: #fff; background-color: #4269ac; }
+.MuiButton-contained:hover { background-color: #36568e; }
+.MuiButton-contained.Mui-disabled { background-color: var(--line); color: var(--muted); }
+[data-theme="dark"] .MuiButton-contained { color: #171f32; background-color: #9dbbff; }
+[data-theme="dark"] .MuiButton-contained:hover { background-color: #b0c8ff; }
+[data-theme="dark"] .MuiButton-contained.Mui-disabled { background-color: var(--line); color: var(--muted); }
+
+/* The site reset must not change MUI's content-box input sizing. */
+.ranking-name { width: 240px; max-width: 100%; }
+.ranking-name .MuiInputBase-input { box-sizing: content-box; }
+.ranking-name .MuiOutlinedInput-root { border-radius: 10px; }
+.ranking-instructions { font-size: 12px; line-height: 1.9; color: var(--muted); white-space: pre-line; margin: 24px 0; }
+@media (max-width: 600px) { .ranking-name { width: 100%; } }

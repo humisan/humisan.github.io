@@ -106,3 +106,12 @@ test('news includes the requested renewal announcement and game routes are linke
     assert.ok(page.includes('href="/play/"'));
   }
 });
+
+
+test('all game pages explain registration and its deadline before playing', async () => {
+  for (const page of ['play', 'play/dino', 'play/rush']) {
+    const content = await readFile(new URL(`out/${page}/index.html`, root), 'utf8');
+    assert.ok(content.includes('ゲーム終了後に公開名を入力して'));
+    assert.ok(content.includes('登録は終了から約2分以内です'));
+  }
+});
