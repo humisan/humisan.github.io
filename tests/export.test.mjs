@@ -60,7 +60,7 @@ test('the deploy workflow retains the domain and runs the regression checks', as
 
 
 test('every separate page is exported with a matching canonical URL and a single primary heading', async () => {
-  for (const page of ['about', 'servers', 'links', 'play']) {
+  for (const page of ['about', 'servers', 'links', 'play', 'play/dino', 'play/rush', 'news']) {
     const content = await readFile(new URL(`out/${page}/index.html`, root), 'utf8');
     assert.ok(content.includes(`href="https://hanyuu.lol/${page}/"`));
     assert.equal([...content.matchAll(/<h1(?:\s|>)/g)].length, 1);
@@ -78,7 +78,7 @@ test('link previews describe the current portfolio rather than the previous web-
 
 
 test('MUI styles are exported in the document head on every route', async () => {
-  for (const route of ['', 'about/', 'servers/', 'links/', 'play/']) {
+  for (const route of ['', 'about/', 'servers/', 'links/', 'play/', 'play/dino/', 'play/rush/', 'news/']) {
     const content = await readFile(new URL(`out/${route}index.html`, root), 'utf8');
     const head = content.slice(0, content.indexOf('</head>'));
     assert.match(head, /data-emotion=/);
@@ -92,4 +92,17 @@ test('the footer uses the chosen motto', () => {
   assert.ok(html.includes('STAY SHARP.'));
   assert.ok(!html.includes('また、ふらっと'));
   assert.ok(!html.includes('humisanのホームページ'));
+});
+
+
+test('news includes the requested renewal announcement and game routes are linked', async () => {
+  const news = await readFile(new URL('out/news/index.html', root), 'utf8');
+  const dino = await readFile(new URL('out/play/dino/index.html', root), 'utf8');
+  const play = await readFile(new URL('out/play/index.html', root), 'utf8');
+  assert.ok(news.includes('サイトリニューアル'));
+  assert.ok(news.includes('dateTime="2026-10-12"') || news.includes('datetime="2026-10-12"'));
+  for (const page of [play, dino]) {
+    assert.ok(page.includes('href="/play/dino/"'));
+    assert.ok(page.includes('href="/play/"'));
+  }
 });

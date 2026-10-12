@@ -35,3 +35,7 @@ next-env.d.ts
 # Generated data files
 /public/spotify-data.json
 /public/github-data.json
+
+# Local Workers runtime and secret bindings
+.wrangler/
+.dev.vars*

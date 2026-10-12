@@ -32,3 +32,24 @@ export function readBestScore(value: string | null): number {
   const score = Number(value);
   return Number.isSafeInteger(score) && score >= 0 && score <= 10000 ? score : 0;
 }
+
+export interface CatchRecord { t: number; id: number; }
+export function catchTargets(seed: number, elapsed: number): Target[] {
+  let value = seed >>> 0;
+  const random = () => { value = (Math.imul(value, 1664525) + 1013904223) >>> 0; return value / 4294967296; };
+  const targets: Target[] = [];
+  for (let id = 1; (id - 1) * 650 < 30000; id++) {
+    const x = 8 + random() * 76, y = 10 + random() * 66;
+    const life = (3200 - (elapsed - (id - 1) * 650)) / 1000;
+    if (elapsed >= (id - 1) * 650 && life > 0) targets.push({ id, x, y, life });
+  }
+  return targets;
+}
+export function rankedCatchState(seed: number, elapsed: number, caught: ReadonlySet<number>): GameState {
+  return { remaining: Math.max(0, 30 - elapsed / 1000), score: caught.size, targets: elapsed >= 30000 ? [] : catchTargets(seed, elapsed).filter(t => !caught.has(t.id)), spawnIn: 0, nextId: 0 };
+}
+export function scoreCatch(records: readonly CatchRecord[]): number {
+  const seen = new Set<number>();
+  for (const record of records) if (record.id >= 1 && record.id <= 47 && record.t >= (record.id - 1) * 650 && record.t <= (record.id - 1) * 650 + 3200 && record.t <= 30000) seen.add(record.id);
+  return seen.size;
+}

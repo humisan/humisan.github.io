@@ -14,7 +14,7 @@ export default function Home() {
     <section className="home-explore content-width" id="explore" aria-labelledby="explore-title"><p className="section-label">A LITTLE MORE ABOUT ME</p><h2 id="explore-title">{ja ? 'このサイトのページ' : 'Follow your curiosity.'}</h2><div className="explore-list">{[
       { href: '/about/', number: '01', title: ja ? '自己紹介と技術' : 'About & skills', description: ja ? 'JavaとMinecraftプラグイン開発' : 'Java, plugins, and server operations.', word: 'ABOUT' },
       { href: '/servers/', number: '02', title: ja ? 'サーバーでの活動' : 'Server projects', description: 'GankMC / LzPvP / 日ノ本鯖', word: 'SERVERS' },
-      { href: '/play/', number: '03', title: ja ? 'ミニゲーム' : 'Take a playful break.', description: ja ? '30秒のサングラス集め' : 'A 30-second sunglasses hunt.', word: 'PLAY' },
+      { href: '/play/', number: '03', title: ja ? 'ミニゲーム' : 'Take a playful break.', description: ja ? 'サングラス集め / メガネDino / TARGET RUSH' : 'Sunglasses / Glasses Run / TARGET RUSH', word: 'PLAY' },
     ].map(item => <Link key={item.href} href={item.href} className="explore-link"><span className="section-label">{item.number} / {item.word}</span><h3>{item.title}</h3><p>{item.description}</p><Icon name="arrow" /></Link>)}</div></section>
   </>;
 }

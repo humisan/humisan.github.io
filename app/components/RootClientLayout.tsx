@@ -23,6 +23,7 @@ function SiteChrome({ children }: { children: ReactNode }) {
         <Link href="/about/" aria-current={pathname.startsWith('/about') ? 'page' : undefined}>{t('nav.about')}</Link>
         <Link href="/servers/" aria-current={pathname.startsWith('/servers') ? 'page' : undefined}>{t('nav.work')}</Link>
         <Link href="/links/" aria-current={pathname.startsWith('/links') ? 'page' : undefined}>{t('nav.links')}</Link>
+        <Link href="/news/" aria-current={pathname.startsWith('/news') ? 'page' : undefined}>{language === 'ja' ? 'お知らせ' : 'News'}</Link>
         <Link href="/play/" aria-current={pathname.startsWith('/play') ? 'page' : undefined}>{language === 'ja' ? '遊ぶ' : 'Play'}<span className="nav-play-star" aria-hidden="true">✦</span></Link>
       </nav>
       <div className="preferences">

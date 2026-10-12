@@ -447,3 +447,44 @@ body { position: relative; isolation: isolate; }
 @media (prefers-reduced-motion: reduce) { .MuiTouchRipple-root { display: none; } }
 
 .footer-motto { font-family: monospace; font-size: 15px; font-weight: 700; letter-spacing: .16em; }
+
+.game-navigation { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 28px; }
+.dino-field { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--sky); height: clamp(200px, 25vw, 300px); touch-action: manipulation; }
+.dino-scene { width: 100%; height: 100%; display: block; }
+.dino-ground { stroke: var(--muted); stroke-width: 2; }
+.dino-cloud { stroke: var(--muted); stroke-width: 3; opacity: .3; }
+.dino-sprite { fill: var(--ink); }
+.dino-eye { fill: var(--page); }
+.dino-obstacle { fill: var(--blue); color: var(--blue); }
+.dino-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--page); opacity: .95; }
+.dino-overlay h2 { font-size: 22px; letter-spacing: .06em; }
+.news-list { max-width: 800px; }
+.news-entry { padding: 30px 0 45px; border-bottom: 1px solid var(--line); }
+.news-meta { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 12px; }
+.news-entry h2 { font-size: 28px; margin: 25px 0; }
+.news-entry p, .news-empty { font-size: 14px; line-height: 2; color: var(--muted); margin-top: 18px; white-space: pre-line; }
+@media (max-width: 400px) { .main-nav { gap: 17px; } }
+
+.dino-shadow { fill: var(--muted); opacity: .15; }
+
+.rush-field { position: relative; aspect-ratio: 2; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; touch-action: manipulation; background: var(--sky); cursor: crosshair; user-select: none; }
+.rush-target { position: absolute; width: 12%; aspect-ratio: 1; border: 3px solid var(--blue); border-radius: 50%; transform: translate(-50%, -50%); background: var(--surface); box-shadow: 0 0 0 5px var(--lavender); pointer-events: none; }
+.rush-target i { position: absolute; inset: 24%; border: 2px solid var(--blue); border-radius: 50%; }
+.rush-target b { position: absolute; inset: 44%; background: var(--ink); border-radius: 50%; }
+.rush-overlay { position: absolute; inset: 0; display: flex; gap: 18px; align-items: center; justify-content: center; flex-direction: column; cursor: default; }
+.rush-overlay h2 { font-size: clamp(18px, 3vw, 30px); }
+.rush-ready { position: absolute; inset: 0; display: grid; place-content: center; color: var(--muted); font: 700 18px monospace; pointer-events: none; }
+.game-hint, .ranking-submit p, .ranking-section > p { margin: 18px 0; color: var(--muted); font-size: 12px; line-height: 1.9; white-space: pre-line; }
+.ranking-submit { margin: 36px 0; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+.ranking-submit h2, .ranking-submit p { width: 100%; margin: 0; }
+.ranking-section { margin-top: 45px; }
+.ranking-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.ranking-section td { overflow-wrap: anywhere; }
+.rush-message { margin-top: 18px; white-space: pre-line; }
+@media (max-width: 400px) { .rush-target { border-width: 2px; } .rush-target i { border-width: 1px; } }
+
+.rush-target { aspect-ratio: 40 / 18; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--ink); }
+.rush-target svg { display: block; width: 100%; height: 100%; }
+
+.MuiButton-contained { color: #fff; }
+[data-theme="dark"] .MuiButton-contained { color: #171f32; }
