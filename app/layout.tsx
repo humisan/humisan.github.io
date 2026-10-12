@@ -1,3 +1,4 @@
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
 import './globals.css';
 import { RootClientLayout } from './components/RootClientLayout';
@@ -19,5 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="ja" data-theme="light" suppressHydrationWarning><body><RootClientLayout>{children}</RootClientLayout></body></html>;
+  return <html lang="ja" data-theme="light" suppressHydrationWarning><body><AppRouterCacheProvider options={{ enableCssLayer: true }}><RootClientLayout>{children}</RootClientLayout></AppRouterCacheProvider></body></html>;
 }
