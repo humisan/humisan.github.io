@@ -29,6 +29,11 @@ export class Ranking extends DurableObject {
     this.sql.exec('CREATE TABLE IF NOT EXISTS receipts (id TEXT PRIMARY KEY, game TEXT NOT NULL, ip TEXT NOT NULL, score INTEGER NOT NULL, created INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS limits (ip TEXT NOT NULL, bucket INTEGER NOT NULL, kind TEXT NOT NULL, count INTEGER NOT NULL, PRIMARY KEY(ip, bucket, kind))');
   }
+  async alarm() {
+    this.sql.exec('DELETE FROM sessions');
+    this.sql.exec('DELETE FROM receipts');
+    this.sql.exec('DELETE FROM limits');
+  }
   moderate(game, name) {
     this.sql.exec('DELETE FROM scores WHERE game=? AND name=?', game, name);
     return {ok:true};
@@ -42,6 +47,7 @@ export class Ranking extends DurableObject {
   async handle(path, body, ip, game) {
     const now = Date.now();
     if (path === '/leaderboard') return { status: 200, data: { entries: this.sql.exec('SELECT name,score,hits,created FROM (SELECT name,score,hits,created,ROW_NUMBER() OVER (PARTITION BY game,name ORDER BY score DESC,created ASC) AS position FROM scores WHERE game=?) WHERE position=1 ORDER BY score DESC,created ASC LIMIT 50', game).toArray() } };
+    await this.ctx.storage.setAlarm(now + 900000);
     this.sql.exec('DELETE FROM sessions WHERE created < ?', now - 720000);
     this.sql.exec('DELETE FROM receipts WHERE created < ?', now - 120000);
     if (path === '/sessions') {
