@@ -1,0 +1,12 @@
+{
+  "name": "humisan-games",
+  "main": "index.js",
+  "compatibility_date": "2025-10-11",
+  "account_id": "f2b578e2a046a5828218cad716affc38",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": { "bindings": [{ "name": "RANKING", "class_name": "Ranking" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Ranking"] }],
+  "vars": { "ALLOW_LOCAL": "false" },
+  "observability": { "enabled": false }
+}
