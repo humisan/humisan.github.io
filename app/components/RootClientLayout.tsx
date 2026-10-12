@@ -40,7 +40,7 @@ function SiteChrome({ children }: { children: ReactNode }) {
         <div><p className="footer-message footer-motto">STAY SHARP.</p><p className="copyright">© {new Date().getFullYear()} humisan</p></div>
         <IconButton component="a" className="back-top" href="#top" aria-label={t('footer.top')}><Icon name="arrow" /></IconButton>
       </div>
-      <div className="footer-word" aria-hidden="true">humisan.</div>
+      <div className="footer-word" aria-hidden="true"><Icon name="glasses" /></div>
     </footer>
   </>;
 }
@@ -48,9 +48,9 @@ function SiteChrome({ children }: { children: ReactNode }) {
 function MaterialTheme({ children }: { children: ReactNode }) {
   const { theme } = useTheme();
   const materialTheme = useMemo(() => createTheme({
-    palette: { mode: theme, primary: { main: theme === 'dark' ? '#9dbbff' : '#4269ac' }, secondary: { main: '#9b86c6' } },
+    palette: { mode: theme, primary: { main: theme === 'dark' ? '#89c7ff' : '#125fca' }, secondary: { main: '#9183cd' } },
     typography: { fontFamily: 'Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif', button: { textTransform: 'none' } },
-    shape: { borderRadius: 16 },
+    shape: { borderRadius: 2 },
     components: {
       MuiButton: { defaultProps: { disableElevation: true }, styleOverrides: { root: { minHeight: 44 } } },
       MuiToggleButton: { styleOverrides: { root: { minHeight: 44, textTransform: 'none' } } },

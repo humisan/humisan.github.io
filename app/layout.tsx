@@ -1,6 +1,7 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
 import './globals.css';
+import './summer-sharp.css';
 import { RootClientLayout } from './components/RootClientLayout';
 
 const title = 'humisan | Java開発とMinecraftサーバー運営';
