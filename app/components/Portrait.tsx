@@ -25,7 +25,7 @@ export default function Portrait() {
         frame.current?.style.setProperty('--tilt-x', '0deg');
         frame.current?.style.setProperty('--tilt-y', '0deg');
       }}>
-      <Image src="/icon.png" alt={t('hero.image')} width={1024} height={1024} priority sizes="(max-width: 700px) 82vw, (max-width: 1000px) 42vw, 440px" className="portrait-image" />
+      <Image src="/profile-summer.png" alt={t('hero.image')} width={1024} height={1024} priority sizes="(max-width: 700px) 82vw, (max-width: 1000px) 42vw, 440px" className="portrait-image" />
       <span className="portrait-caption"><span>SUMMER STATE OF MIND</span><Icon name="glasses" /></span>
     </button>
     <div className="portrait-sticker"><span aria-hidden="true">✳</span>{t('hero.caption')}</div>
