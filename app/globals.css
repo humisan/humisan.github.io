@@ -458,6 +458,11 @@ body { position: relative; isolation: isolate; }
 .dino-obstacle { fill: var(--blue); color: var(--blue); }
 .dino-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--page); opacity: .95; }
 .dino-overlay h2 { font-size: 22px; letter-spacing: .06em; }
+.news-list { max-width: 800px; }
+.news-entry { padding: 30px 0 45px; border-bottom: 1px solid var(--line); }
+.news-meta { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 12px; }
+.news-entry h2 { font-size: 28px; margin: 25px 0; }
+.news-entry p, .news-empty { font-size: 14px; line-height: 2; color: var(--muted); margin-top: 18px; white-space: pre-line; }
 @media (max-width: 400px) { .main-nav { gap: 17px; } }
 
 .dino-shadow { fill: var(--muted); opacity: .15; }
