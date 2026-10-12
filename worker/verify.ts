@@ -1,6 +1,6 @@
 import { validRushShots, scoreRush } from '../app/lib/target-rush';
 import { scoreCatch, CatchRecord } from '../app/lib/catch-game';
-import { advanceDino, jumpDino, newDinoGame } from '../app/lib/dino-game';
+import { advanceDino, jumpDino, newDinoGame } from '../app/lib/dino-game-v1';
 export function verifyRecord(game: string, seed: number, record: unknown): {score:number; duration:number} | null {
   if (game === 'rush') return validRushShots(record) ? { score:scoreRush(seed,record).score,duration:30000 } : null;
   if (game === 'catch') {

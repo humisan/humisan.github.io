@@ -2,8 +2,8 @@ import { readFile } from 'node:fs/promises';
 const args=process.argv.slice(2);
 const get=name=>args[args.indexOf(name)+1];
 const game=get('--game'), name=get('--name'), file=get('--key-file');
-if (!args.includes('--game') || !args.includes('--name') || !args.includes('--key-file') || !['catch','dino','rush'].includes(game) || !name || !file) {
-  console.error('使い方: node worker/moderate.mjs --game catch|dino|rush --name 公開名 --key-file 管理キーのファイル');
+if (!args.includes('--game') || !args.includes('--name') || !args.includes('--key-file') || !['catch','dino','dino-v2','rush'].includes(game) || !name || !file) {
+  console.error('使い方: node worker/moderate.mjs --game catch|dino|dino-v2|rush --name 公開名 --key-file 管理キーのファイル');
   process.exit(2);
 }
 try {
