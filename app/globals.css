@@ -495,7 +495,18 @@ body { position: relative; isolation: isolate; }
 
 /* The site reset must not change MUI's content-box input sizing. */
 .ranking-name { width: 240px; max-width: 100%; }
-.ranking-name .MuiInputBase-input { box-sizing: content-box; }
+.ranking-submit .MuiInputBase-input { box-sizing: content-box; }
 .ranking-name .MuiOutlinedInput-root { border-radius: 10px; }
 .ranking-instructions { font-size: 12px; line-height: 1.9; color: var(--muted); white-space: pre-line; margin: 24px 0; }
 @media (max-width: 600px) { .ranking-name { width: 100%; } }
+
+.ranking-submit .MuiFormControl-root { width: 240px; max-width: 100%; }
+@media (max-width: 600px) { .ranking-submit .MuiFormControl-root { width: 100%; } }
+.dino-field { max-width: 602px; height: 152px; margin-inline: auto; border-radius: 10px; }
+.dino-field.dino-night { --ink: #f0f2fa; --page: #171f32; --sky: #171f32; --muted: #9baccb; --blue: #b6c8f5; }
+.dino-overlay { background: transparent; opacity: 1; gap: 10px; }
+.dino-overlay h2 { font-size: 18px; }
+.dino-overlay .primary-link { margin-top: 0; }
+.dino-canvas-score { fill: var(--ink); font: 12px monospace; letter-spacing: 1px; }
+.dino-achievement { animation: dino-score-flash .25s steps(2) 6; }
+@keyframes dino-score-flash { 50% { opacity: .25; } }
