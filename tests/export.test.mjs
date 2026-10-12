@@ -66,3 +66,12 @@ test('every separate page is exported with a matching canonical URL and a single
     assert.equal([...content.matchAll(/<h1(?:\s|>)/g)].length, 1);
   }
 });
+
+
+test('link previews describe the current portfolio rather than the previous web-design profile', () => {
+  assert.ok(html.includes('property="og:title" content="humisan | Java開発とMinecraftサーバー運営"'));
+  assert.ok(html.includes('property="og:description" content="Javaでのプラグイン開発'));
+  assert.ok(!html.includes('Creative developer exploring web design and code'));
+  assert.ok(!html.includes('humisan - Developer'));
+  assert.ok(html.includes('rel="icon" href="/profile-summer.png"'));
+});
